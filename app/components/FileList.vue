@@ -18,7 +18,7 @@
     </ul>
   </div>
 
-  <el-dialog v-model="preview.dialogVisible" title="" width="80%">
+  <el-dialog v-model="preview.dialogVisible" title="" style="max-width:80%">
     <div>
       <el-container direction="vertical">
         <el-main style="border-bottom: 1px solid #eee6e6;">
@@ -135,6 +135,7 @@ async function renameImage(filename) {
       }
     }
     ElMessage({message: data.msg, type: "success"});
+    preview.value.dialogVisible = false;
   }
 }
 
