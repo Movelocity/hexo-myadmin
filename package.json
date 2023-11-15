@@ -28,7 +28,8 @@
     "app:dev": "vite app --host",
     "app:build": "vite build app",
     "app:lint": "eslint app --ext .vue --ext .js --fix",
-    "server:lint": "eslint server --ext .js --fix"
+    "server:lint": "eslint server --ext .js --fix",
+    "postinstall": "cd node_modules/hexo-myadmin && npm run app:build"
   },
   "dependencies": {
     "@codemirror/language-data": "^6.3.1",
