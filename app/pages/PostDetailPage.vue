@@ -1,7 +1,7 @@
 <template>
   <article-detail
-    :article-api="postApi"
     :article-id="route.params.postId"
+    :article-api="postApi"
   />
 </template>
 

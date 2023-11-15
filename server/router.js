@@ -4,10 +4,13 @@ const {"http":{Router, methods}} = require("director");
 const ArticleService = require("./service/article");
 const CategoryService = require("./service/tag");
 const ConfigService = require("./service/config");
+const FileSerivce = require("./service/files");
+
 const articleController = require("./controller/article");
 const tagController = require("./controller/tag");
 const configController = require("./controller/config");
 const authController = require("./controller/auth");
+const fileController = require('./controller/files');
 
 const router = new Router();
 router.configure({"async": true, "recurse": false, "strict": false});
@@ -38,6 +41,7 @@ module.exports = function (hexo) {
             "category": new CategoryService(hexo, "Category"),
             "tag": new CategoryService(hexo, "Tag"),
             "config": new ConfigService(hexo),
+            "files": new FileSerivce(hexo, "Post"),
         };
     });
 
@@ -46,6 +50,7 @@ module.exports = function (hexo) {
     router.get("/:arttype", articleController.list);
     router.get("/:arttype/:id", articleController.detail);
     router.get("/:arttype/:id/raw", articleController.raw);
+    
     router.post("/:arttype", articleController.create);
     router.put("/:arttype/:id", articleController.update);
     router.delete("/:arttype/:id", articleController.delete);
@@ -59,6 +64,13 @@ module.exports = function (hexo) {
     router.post("/config", configController.updateConfig);
     router.get("/themeconfig", configController.getThemeConfig);
     router.post("/themeconfig", configController.updateThemeConfig);
+    
+    // router无法解析带'%'的编码URI，所以部分参数采用 url search params 传入
+    router.get('/files/getImage', fileController.getFile);   // ?articleId=xxx&filename=xxx
+    router.get("/files/listFiles/:id", fileController.listFiles);
+    // router.get('/files/:id/:name', fileController.getFile);
+    router.patch('/files/rename', fileController.renameFile); // ?articleId=xxx&oldName=xxx&newName=xxx
+    router.post('/files/:id', fileController.uploadFile)
 
     return router.dispatch.bind(router);
 };

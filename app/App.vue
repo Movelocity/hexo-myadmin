@@ -44,6 +44,7 @@
       </el-menu>
     </el-header>
     <el-main>
+      <!--随内容改变的部分-->
       <router-view />
     </el-main>
   </el-container>

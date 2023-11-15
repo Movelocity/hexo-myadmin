@@ -27,21 +27,23 @@ hexo.extend.filter.register("server_middleware", function (app) {
     const adminRoot = hexo.config.root + "admin";
     const apiRoot = adminRoot + "/api";
 
-    // main route
+    // main route. 访问 /admin 就会来到 vue 编译结果的 dist 文件夹
     app.use(adminRoot, serveStatic(path.join(__dirname, "../dist")));
 
     // params
-    app.use(apiRoot, connectQuery());
-    app.use(apiRoot, bodyParser.json({"limit": "50mb"}));
+    app.use(apiRoot, connectQuery());  // Parse query parameters in Connect or Express
+    app.use(apiRoot, bodyParser.json({"limit": "50mb"})); // 限制 50Mb body
 
     // helper
     app.use(apiRoot, middleware.helper);
-
+    app.use(apiRoot, middleware.multipart);
+    
     // auth
     if (hexo.config.admin) {
         app.use(apiRoot, session({
             "resave": false,
             "saveUninitialized": false,
+            "cookie": { maxAge: 1000 * 60 * 60 * 24 * 5 },
             "secret": hexo.config.admin.secret,
         }));
         app.use(apiRoot, middleware.auth);

@@ -4,6 +4,13 @@ a hexo dashboard plugin, for live hexo server.
 
 ![example](./example.gif)
 
+## What is new in this fork?
+
+Check out `app/components/FileList.vue`, `server/controller/files.js`, `server/service/files.js`.
+
+You can manage blog pictures in each edit page in this fork. 
+
+
 ## USAGE
 
 Node.js >= 12.0.0 required.

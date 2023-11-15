@@ -25,7 +25,7 @@ module.exports = {
     list(type) {
         const page = (+this.req.query.page || 1) - 1;
         const title = this.req.query.title?.trim();
-        const category = this.req.query.category?.trim();
+        const category = this.req.query.category?.trim();  
         const tag = this.req.query.tag?.trim();
         const pageSize = 15;
         const postList = this.service[type].list({category, title, tag});

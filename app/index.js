@@ -19,7 +19,7 @@ app.use(VueCodemirror, {
     "autofocus": false,
     "disabled": false,
     "indentWithTab": true,
-    "tabSize": 4,
+    "tabSize": 2,
     "extensions": [basicSetup, EditorView.lineWrapping],
 });
 

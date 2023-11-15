@@ -26,4 +26,23 @@ export default {
     unpublish(id) {
         return request.post(`post/${id}/unpublish`);
     },
+    // file options
+    listFiles(articleId) {
+        return request.get(`files/listFiles/${articleId}`);
+    },
+    getFile(articleId, filename){
+        // /files/getImage/
+        // return request.get(`files/${articleId}/${filename}`, {responseType: "arraybuffer"});
+        return request.get(`files/getImage?articleId=${articleId}&filename=${filename}`, {responseType: "arraybuffer"});
+    },
+    renameFile(articleId, oldName, newName){
+        return request.patch(`files/rename?articleId=${articleId}&oldName=${oldName}&newName=${newName}`);
+    },
+    uploadFile(articleId, formData){
+        return request.post(`files/${articleId}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+    }
 };
