@@ -1,6 +1,6 @@
 {
   "name": "hexo-myadmin",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "a hexo dashboard plugin, for live blog server.",
   "keywords": [
     "hexo",
@@ -12,14 +12,14 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thesadabc/hexo-myadmin.git"
+    "url": "git+https://github.com/Movelocity/hexo-myadmin.git"
   },
   "author": "thesadabc",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/thesadabc/hexo-myadmin/issues"
+    "url": "https://github.com/Movelocity/hexo-myadmin/issues"
   },
-  "homepage": "https://github.com/thesadabc/hexo-myadmin#readme",
+  "homepage": "https://github.com/Movelocity/hexo-myadmin#readme",
   "engines": {
     "node": ">= 12.0.0"
   },
