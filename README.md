@@ -20,9 +20,6 @@ Node.js >= 12.0.0 required.
     # install hexo-myadmin
     # npm i hexo-myadmin --save
     npm install https://github.com/Movelocity/hexo-myadmin.git --save
-    cd node_modules/hexo-myadmin
-    npm run app:build
-    cd ../..
 
     # start server with global hexo-cli
     hexo server -p 4000
