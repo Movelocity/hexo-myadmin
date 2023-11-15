@@ -18,7 +18,7 @@ Node.js >= 12.0.0 required.
 ```bash
     # install hexo-myadmin
     # npm i hexo-myadmin --save
-    npm install https://github.com/Movelocity/hexo-myadmin.git
+    npm install https://github.com/Movelocity/hexo-myadmin.git --save
 
     # start server with global hexo-cli
     hexo server -p 4000
