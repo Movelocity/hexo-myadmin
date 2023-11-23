@@ -143,6 +143,7 @@ async function deleteImage(filename) {
   // await api.deleteFile(fileId);
   // Remove the deleted file from the files list
   // 要换一种方式去除数组元素，这种方式可能导致剩下的发生混乱。
+  await api.deleteFile(props.articleId, filename);
   imgList.value = imgList.value.filter(imgItem => imgItem.name !== filename);
   console.log("try to delete file: "+filename);
   preview.value.dialogVisible = false;

@@ -17,7 +17,17 @@
               :key="idx"
               :label="c"
               :value="c"
-            />
+            >
+              <span>{{ c }}</span>
+
+              <span style="float: right; margin-right=-10px">
+                <router-link :to="{name: 'PostAdd', query: { 'defaultCategory': c }}">
+                  <el-text type="primary">
+                    Add
+                  </el-text>
+                </router-link>
+              </span>
+            </el-option>
           </el-select>
         </el-form-item>
         <el-form-item>
@@ -186,7 +196,6 @@ const tableData = computed(() =>
         "to": props.articleType === "post" ?
             {"name":"PostDetail", "params":{"postId": p._id}}:
             {"name":"PageDetail", "params":{"pageId": p._id}},
-
     })),
 );
 

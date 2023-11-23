@@ -38,6 +38,9 @@ export default {
     renameFile(articleId, oldName, newName){
         return request.patch(`files/rename?articleId=${articleId}&oldName=${oldName}&newName=${newName}`);
     },
+    deleteFile(articleId, filename){
+        return request.patch(`files/delete?articleId=${articleId}&filename=${filename}`);
+    },
     uploadFile(articleId, formData){
         return request.post(`files/${articleId}`, formData, {
             headers: {

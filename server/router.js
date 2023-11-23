@@ -70,7 +70,7 @@ module.exports = function (hexo) {
     router.get("/files/listFiles/:id", fileController.listFiles);
     // router.get('/files/:id/:name', fileController.getFile);
     router.patch('/files/rename', fileController.renameFile); // ?articleId=xxx&oldName=xxx&newName=xxx
+    router.patch('/files/delete', fileController.deleteFile)
     router.post('/files/:id', fileController.uploadFile)
-
     return router.dispatch.bind(router);
 };

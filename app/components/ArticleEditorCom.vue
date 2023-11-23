@@ -45,9 +45,10 @@ import fileList from "./FileList.vue";
 
 const emit = defineEmits(["save"]);
 // 获取加载此组件时在标签内指定的参数
-const props = defineProps(["articleId", "articleApi"]);
+const props = defineProps(["articleId", "articleApi", "defaultCategory"]);
 
 const api = props.articleApi;
+let category = props.defaultCategory;
 const articleDetail = ref({}); // keys: meta, content
 
 const sideMenuWidth = ref('300px');
@@ -62,8 +63,8 @@ onMounted(async () => {
     // pageConfig.value.articleMeta = "title: \"untitled\"\ncategories: \"uncategorized\"\ntags:\n  - \"tag1\"\n  - \"tag2\"\n";
     // pageConfig.value.articleDetail = "\n\n\n\n\n\n\n\n\n\n";
     articleDetail.value = {
-        "meta": "title: \"untitled\"\ncategories: \"uncategorized\"\ntags:\n  - \"tag1\"\n  - \"tag2\"\n",
-        "content": "\n\n\n\n\n",
+      "meta": `title: "untitled"\ncategories: "${category}"\ntags:\n  - "tag1"\n  - "tag2"\n`,
+      "content": "\n\n\n\n\n",
     };
   }
 });
@@ -73,9 +74,10 @@ async function handleSave() {
     const {code} = await api.update(props.articleId, articleDetail.value);
     if (!code) ElMessage.success("success");
   } else {
+    // if not exists, then create
     const {code, data} = await api.create(articleDetail.value);
     if (code) return;
-    ElMessage.success("success");
+    ElMessage.success("post");
     emit("save", data);
   }
 }

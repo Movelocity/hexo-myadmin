@@ -104,8 +104,11 @@ module.exports = class ArticleService {
         if (this.type === "Post") {
             compiled.categories = compiled.categories || [this.hexo.config.default_category];
         }
-
-        await fs.writeFile(doc.full_source, hfm.stringify(compiled));
+        let doc_content = hfm.stringify(compiled);
+        if (!doc_content.startsWith("---\n")) {
+            doc_content = "---\n" + doc_content;
+        } // default hfm output does not have a starting --- before the front matter
+        await fs.writeFile(doc.full_source, doc_content);
         await this.hexo.source.process();
         return this.detail({"source": this.getSource(doc.full_source)});
     }

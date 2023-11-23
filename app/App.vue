@@ -8,6 +8,7 @@
         :default-active="route.path"
       >
         <span class="el-menu-item">HEXO MYADMIN</span>
+
         <el-sub-menu index="Posts">
           <template #title>
             Posts
@@ -19,6 +20,7 @@
             AddPost
           </el-menu-item>
         </el-sub-menu>
+
         <el-sub-menu index="Pages">
           <template #title>
             Pages
@@ -30,12 +32,15 @@
             AddPage
           </el-menu-item>
         </el-sub-menu>
+
         <el-menu-item :index="menus.Config.path">
           Config
         </el-menu-item>
+
         <el-menu-item :index="menus.ThemeConfig.path">
           ThemeConfig
         </el-menu-item>
+        
         <div class="flex-grow" />
         <a
           href="../"

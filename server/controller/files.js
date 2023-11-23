@@ -36,6 +36,22 @@ module.exports = {
         }
     },
 
+    deleteFile () {
+        // articleId, oldName, newName
+        let params = new URL(this.req.url, "http://example.org").searchParams;
+        let articleId = params.get('articleId')
+        let filename = decodeURI(params.get('filename'));
+
+        console.log(`delete ${articleId}, ${filename}`);
+        try {
+            this.service.files.deleteFile(articleId, filename);
+            this.res.send({ msg: 'File deleted' });
+        } catch (error) {
+            console.log(error)
+            this.res.send(1);
+        }
+    },
+
     /**
      * File will be saved to the fellow folder of yhe article.
      * req.pipe(fs.createWriteStream(filepath, {encoding: 'binary'})); 

@@ -2,6 +2,7 @@
 
 const {join} = require("path");
 const {exists, readFile, writeFile} = require("hexo-fs");
+
 const loadConfig = require("hexo/dist/hexo/load_config");
 const loadThemeConfig = require("hexo/dist/hexo/load_theme_config");
 

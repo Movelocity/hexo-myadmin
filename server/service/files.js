@@ -95,17 +95,24 @@ module.exports = class FileSerivce {
         const filename = file.name;
         // don't attach to the files object, if there is no file
         if(!filename || filename.length==0){
-            filename = "undefined";
+            return "undefined";
         }
-        const fellowFiles = fs.readdirSync(folderPath);
-        while(fellowFiles.filter((fname)=>fname == filename).length > 0){
-            filename = '0' + filename;
-        }
+        // const fellowFiles = fs.readdirSync(folderPath);
+        // while(fellowFiles.filter((fname)=>fname == filename).length > 0){
+        //     filename = '0' + filename;
+        // }
         const filepath = path.join(folderPath, filename);
-        console.log(`prepare to write: ${filepath}`);
+        console.log(`[ service/files.js ] saving file: ${filepath}`);
         fs.writeFileSync(filepath, file.buffer);
         return filename;
         // file.buffer.write(fs.createWriteStream(filepath, {encoding: 'buffer'})); 
         // encoding:'binary', encoding:'base64', encoding:'utf8' 都行
     }
+
+    deleteFile = (articleId, filename) => {
+        const folderPath = this.fellowFolder(articleId);
+        fs.unlinkSync(path.join(folderPath, filename));
+        return "ok";
+    }
+
 }
