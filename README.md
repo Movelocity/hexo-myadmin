@@ -10,8 +10,6 @@ Check out `app/components/FileList.vue`, `server/controller/files.js`, `server/s
 
 You can manage blog pictures in each edit page in this fork. 
 
-note that file deletion is not implement in `server` script yet, there are security concerns.
-
 ## USAGE
 
 Node.js >= 12.0.0 required.
