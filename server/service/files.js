@@ -18,7 +18,7 @@ const formatSize = (size) => {
 
 const isImage = (filename) => {
     const extension = filename.split('.').pop().toLowerCase();
-    return ['jpg', 'jpeg', 'png', 'gif'].includes(extension);
+    return ['jpg', 'jpeg', 'png', 'gif', 'webp'].includes(extension);
 };
 
 

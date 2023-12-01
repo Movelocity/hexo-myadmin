@@ -37,13 +37,14 @@ hexo.extend.filter.register("server_middleware", function (app) {
     // helper
     app.use(apiRoot, middleware.helper);
     app.use(apiRoot, middleware.multipart);
-    
+
     // auth
     if (hexo.config.admin) {
         app.use(apiRoot, session({
             "resave": false,
             "saveUninitialized": false,
-            "cookie": { maxAge: 1000 * 60 * 60 * 24 * 5 },
+            "rolling": true,
+            "cookie": { maxAge: 1000 * 60 * 60 * 24 * 365 },
             "secret": hexo.config.admin.secret,
         }));
         app.use(apiRoot, middleware.auth);
